@@ -5,7 +5,11 @@
 
     const store = useMainStore();
     const inputPlaceholder = 'Input substring to find a repo';
-    const buttonText = 'Search'
+    const buttonText = 'Search';
+
+    function requestRepos(substr: string) {
+        store.searchRepos(substr);
+    }
 </script>
 
 <template>
@@ -13,14 +17,19 @@
         v-if="store.token"
         class="repos-table"
     >
-        <h2>Search for GitHub repositories</h2>
+        <h2>{{store.repositoryTableHeader}}</h2>
         <user-form
             :errorMessage="store.errorMessage"
             :inputPlaceholder="inputPlaceholder"
             :buttonText="buttonText"
+            :columns="store.tableColumns"
             @userInputSubmit="requestRepos"
         />
-        <Table title="Vue Repositories"/>
+        <Table
+            title="First 20 Repositories"
+            :cellsData="store.repos"
+            :columnSettings="store.repositoryColumns"
+        />
     </div>
 </template>
 

@@ -1,46 +1,50 @@
 <script setup lang="ts">
+    import { ColumnSetting } from '@/types';
     const props = defineProps<{
-        title: string
+        title: string,
+        columnSettings: ColumnSetting[],
+        cellsData: ColumnSetting[],
     }>();
 </script>
 
 <template>
-    <table class="table">
+    <table class="table" v-if="cellsData.length">
         <caption class="table-caption">{{ title }}</caption>
         <tr class="table-row">
-            <th class="table-header-cell">Company</th>
-            <th class="table-header-cell">Contact</th>
-            <th class="table-header-cell">Country</th>
+            <th
+                v-for="(item, index) in columnSettings"
+                :key="index + Date.now() * Math.random()"
+                :data-type="item.type"
+                class="table-header-cell"
+            >
+                {{item.value}}
+            </th>
         </tr>
-        <tr class="table-row">
-            <td class="table-cell">Alfreds Futterkiste</td>
-            <td class="table-cell">Maria Anders</td>
-            <td class="table-cell">Germany</td>
-        </tr>
-        <tr class="table-row">
-            <td class="table-cell">Centro comercial Moctezuma</td>
-            <td class="table-cell">Francisco Chang</td>
-            <td class="table-cell">Mexico</td>
-        </tr>
-        <tr class="table-row">
-            <td class="table-cell">Alfreds Futterkiste</td>
-            <td class="table-cell">Maria Anders</td>
-            <td class="table-cell">Germany</td>
-        </tr>
-        <tr class="table-row">
-            <td class="table-cell">Centro comercial Moctezuma</td>
-            <td class="table-cell">Francisco Chang</td>
-            <td class="table-cell">Mexico</td>
-        </tr>
-        <tr class="table-row">
-            <td class="table-cell">Alfreds Futterkiste</td>
-            <td class="table-cell">Maria Anders</td>
-            <td class="table-cell">Germany</td>
-        </tr>
-        <tr class="table-row">
-            <td class="table-cell">Centro comercial Moctezuma</td>
-            <td class="table-cell">Francisco Chang</td>
-            <td class="table-cell">Mexico</td>
+        <tr
+            v-for="(cellData, index) in cellsData"
+            :key="index + Date.now() * Math.random()"
+            class="table-row"
+        >
+            <td
+                v-for="(repoInfo, index) in cellData"
+                :key="index + Date.now() * Math.random()"
+                class="table-cell"
+            >
+                <a
+                    v-if="repoInfo.type === 'url'"
+                    :href="repoInfo.value"
+                    class="cell-link"
+                >
+                    {{repoInfo.value}}
+                </a>
+                <span
+                    v-else
+                    class="cell-value"
+                >
+                    {{repoInfo.value}}
+                </span>
+            </td>
+            {{cellData.value}}
         </tr>
     </table>
 </template>
