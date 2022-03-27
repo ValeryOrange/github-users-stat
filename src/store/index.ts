@@ -2,23 +2,23 @@ import { defineStore } from 'pinia';
 import myFetch from '@/gql';
 import { viewer } from './queries';
 
+const ERROR_MESSAGE = 'Wrong PAT. Please, try again!';
+
 const useMainStore = defineStore('main', {
   state: () => ({
-    counter: 0,
     user: 'Unknown User',
     token: '',
+    errorMessage: '',
   }),
-  getters: {
-    doubleCount: (state) => state.counter * 2,
-  },
   actions: {
-    increment() {
-      this.counter++;
-    },
     setToken(token: string) {
-      this.token = token;
-      myFetch(this.token, viewer).then(({data}) => {
+      myFetch(token, viewer).then(({data}) => {
         this.user = data && data.viewer ? data.viewer.login : '';
+        this.token = token;
+        this.errorMessage = '';
+      })
+      .catch(() => {
+        this.errorMessage = ERROR_MESSAGE;
       });
     },
   },

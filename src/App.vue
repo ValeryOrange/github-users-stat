@@ -2,7 +2,6 @@
   import TokenForm from '@/components/TokenForm.vue'
   import useMainStore from '@/store/index';
   const store = useMainStore();
-  
 </script>
 
 <template>
@@ -15,10 +14,14 @@
     </header>
     <h1 
       v-if="store.token"
-      class="greeting">
+      class="greeting"
+    >
       Hello, {{store.user}}!
     </h1>
-    <token-form v-else />
+    <token-form
+      v-else
+      :errorMessage="store.errorMessage"
+    />
     <router-view />
   </div>
 </template>

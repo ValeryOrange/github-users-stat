@@ -1,7 +1,14 @@
 <script setup lang="ts">
     import useMainStore from '@/store/index';
+    const props = defineProps({
+        errorMessage: String,
+    });
     const store = useMainStore();
-    let userToken: string;
+    let userToken: string = '';
+    /**
+     * For better performance in a real project it would reasonable
+     * to handle button clicks with throttle
+     */
     function setToken(e: Event) {
         e.preventDefault();
         store.setToken(this.userToken);
@@ -10,17 +17,30 @@
 </script>
 
 <template>
-    <form class="user-form">
-        <input 
-            class="user-input"
-            v-model="userToken"
-            placeholder="Input your GitHub PAT for Users and Repos"
-        />
-        <button class="user-button" type="submit" @click="setToken">Set My PAT</button>
-    </form>
+    <div class="user-block">
+        <span
+            v-if="errorMessage"
+            class="error-message"
+        >{{errorMessage}}</span>
+        <form class="user-form">
+            <input 
+                class="user-input"
+                v-model="userToken"
+                placeholder="Input your GitHub PAT for Users and Repos"
+            />
+            <button class="user-button" type="submit" @click="setToken">Set My PAT</button>
+        </form>
+    </div>
 </template>
 
 <style scoped>
+    .error-message {
+        position: absolute;
+        top: 0;
+        left: 20px;
+        color: var(--vt-c-red);
+    }
+
     .user-form {
         display: flex;
         flex-direction: column;
