@@ -1,20 +1,13 @@
 <script setup lang="ts">
-import HelloWorld from '@/components/HelloWorld.vue'
 </script>
 
 <template>
   <div id="app">
     <header>
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-      <div class="wrapper">
-        <HelloWorld msg="You did it!" />
-
-        <nav>
-          <router-link to="/">Home</router-link>
-          <router-link to="/about">About</router-link>
-        </nav>
-      </div>
+      <nav>
+        <router-link to="/">Repos</router-link>
+        <router-link to="/contributors">Contributors</router-link>
+      </nav>
     </header>
 
     <router-view />
@@ -25,11 +18,7 @@ import HelloWorld from '@/components/HelloWorld.vue'
 @import '@/assets/base.css';
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
-  font-weight: normal;
+  font-weight: 400;
 }
 
 header {
@@ -58,8 +47,7 @@ a,
 nav {
   width: 100%;
   font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+  margin-top: 40px;
 }
 
 nav a.router-link-exact-active {
@@ -81,17 +69,6 @@ nav a:first-of-type {
 }
 
 @media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-
   header {
     display: flex;
     place-items: center;
