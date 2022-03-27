@@ -1,4 +1,8 @@
 <script setup lang="ts">
+  import TokenForm from '@/components/TokenForm.vue'
+  import useMainStore from '@/store/index';
+  const store = useMainStore();
+  
 </script>
 
 <template>
@@ -9,13 +13,22 @@
         <router-link to="/contributors">Contributors</router-link>
       </nav>
     </header>
-
+    <h1 
+      v-if="store.token"
+      class="greeting">
+      Hello, {{store.user}}!
+    </h1>
+    <token-form v-else />
     <router-view />
   </div>
 </template>
 
 <style>
 @import '@/assets/base.css';
+
+.greeting {
+  margin-left: var(--regular-margin)
+}
 
 header {
   line-height: 1.5;
