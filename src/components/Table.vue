@@ -3,7 +3,7 @@
     const props = defineProps<{
         title: string,
         columnSettings: ColumnSetting[],
-        cellsData: ColumnSetting[],
+        cellsData: ColumnSetting[][],
     }>();
 </script>
 
@@ -44,7 +44,6 @@
                     {{cellData.value}}
                 </span>
             </td>
-            {{rowInfo.value}}
         </tr>
     </table>
 </template>

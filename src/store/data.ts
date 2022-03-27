@@ -5,7 +5,7 @@ export const repositoryColumns = [
     },
     {
         type: 'url',
-        value: 'Repository Name',
+        value: 'Repository URL',
     },
     {
         type: 'owner',

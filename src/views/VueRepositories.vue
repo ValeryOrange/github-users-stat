@@ -34,7 +34,7 @@
             @userInputSubmit="requestRepos"
         />
         <Table
-            title="First 20 Repositories"
+            :title="store.reposCount > 20 ? 'First 20 Repositories' : `${store.reposCount} Repositories`"
             :cellsData="store.repos"
             :columnSettings="store.repositoryColumns"
         />

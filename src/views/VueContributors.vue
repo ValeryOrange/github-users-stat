@@ -1,5 +1,6 @@
 <script setup lang="ts">
     import Table from '@/components/Table.vue';
+    import UserForm from '@/components/UserForm.vue';
     import useMainStore from '@/store/index';
 
     const store = useMainStore();
@@ -17,12 +18,11 @@
             :errorMessage="store.errorMessage"
             :inputPlaceholder="inputPlaceholder"
             :buttonText="buttonText"
-            @userInputSubmit="requestRepos"
         />
         <Table
             title="First 20 Users"
-            :cellsData="store.repos"
-            :columnSettings="store.userColumns"
+            :cellsData="store.users"
+            :columnSettings="store.usersColumns"
         />
     </div>
 </template>

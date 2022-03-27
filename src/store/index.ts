@@ -13,6 +13,8 @@ const useMainStore = defineStore('main', {
     token: '',
     errorMessage: '',
     repos: [],
+    users: [],
+    reposCount: 0,
     repositoryTableHeader: 'Search for GitHub repositories.',
     repositoryColumns,
     usersColumns,
@@ -38,6 +40,7 @@ const useMainStore = defineStore('main', {
         query: substr,
       };
       myFetch(this.token, searchRepos, variables).then(({data, errors}) => {
+        this.reposCount = data.search.repositoryCount;
         this.repositoryTableHeader = `Found ${data.search.repositoryCount} repositories.`;
         this.repos = data.search.edges.map((item: RepositoryInfo, index: number): Repo => {
           return [
