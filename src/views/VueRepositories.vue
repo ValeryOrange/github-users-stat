@@ -31,7 +31,6 @@
             :errorMessage="store.errorMessage"
             :inputPlaceholder="inputPlaceholder"
             :buttonText="buttonText"
-            :columns="store.tableColumns"
             @userInputSubmit="requestRepos"
         />
         <Table

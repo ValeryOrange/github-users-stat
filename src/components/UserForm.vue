@@ -16,7 +16,6 @@
         e.preventDefault();
         emit('userInputSubmit', this.userInput);
     }
-    export {};
 </script>
 
 <template>

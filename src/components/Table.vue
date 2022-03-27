@@ -21,30 +21,30 @@
             </th>
         </tr>
         <tr
-            v-for="(cellData, index) in cellsData"
+            v-for="(rowInfo, index) in cellsData"
             :key="index + Date.now() * Math.random()"
             class="table-row"
         >
             <td
-                v-for="(repoInfo, index) in cellData"
+                v-for="(cellData, index) in rowInfo"
                 :key="index + Date.now() * Math.random()"
                 class="table-cell"
             >
                 <a
-                    v-if="repoInfo.type === 'url'"
-                    :href="repoInfo.value"
+                    v-if="cellData.type === 'url'"
+                    :href="cellData.value"
                     class="cell-link"
                 >
-                    {{repoInfo.value}}
+                    {{cellData.value}}
                 </a>
                 <span
                     v-else
                     class="cell-value"
                 >
-                    {{repoInfo.value}}
+                    {{cellData.value}}
                 </span>
             </td>
-            {{cellData.value}}
+            {{rowInfo.value}}
         </tr>
     </table>
 </template>

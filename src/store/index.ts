@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import myFetch from '@/gql';
 import { Repo, User, UsersInfo, RepositoryInfo } from '@/types';
 import { viewer, searchRepos } from './queries';
-import { repositoryColumns } from './data';
+import { repositoryColumns, usersColumns } from './data';
 
 const ERROR_MESSAGE_PAT = 'Wrong PAT. Please, try again!';
 const ERROR_MESSAGE_SEARCH_REPO = 'Cannot find requested repositories.';
@@ -15,6 +15,8 @@ const useMainStore = defineStore('main', {
     repos: [],
     repositoryTableHeader: 'Search for GitHub repositories.',
     repositoryColumns,
+    usersColumns,
+    usersTableHeader: 'Search for GitHub users',
   }),
   actions: {
     setToken(token: string) {
