@@ -7,30 +7,67 @@
 <template>
     <table class="table">
         <caption class="table-caption">{{ title }}</caption>
-        <tr>
-            <th>Company</th>
-            <th>Contact</th>
-            <th>Country</th>
+        <tr class="table-row">
+            <th class="table-header-cell">Company</th>
+            <th class="table-header-cell">Contact</th>
+            <th class="table-header-cell">Country</th>
         </tr>
-        <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
+        <tr class="table-row">
+            <td class="table-cell">Alfreds Futterkiste</td>
+            <td class="table-cell">Maria Anders</td>
+            <td class="table-cell">Germany</td>
         </tr>
-        <tr>
-            <td>Centro comercial Moctezuma</td>
-            <td>Francisco Chang</td>
-            <td>Mexico</td>
+        <tr class="table-row">
+            <td class="table-cell">Centro comercial Moctezuma</td>
+            <td class="table-cell">Francisco Chang</td>
+            <td class="table-cell">Mexico</td>
+        </tr>
+        <tr class="table-row">
+            <td class="table-cell">Alfreds Futterkiste</td>
+            <td class="table-cell">Maria Anders</td>
+            <td class="table-cell">Germany</td>
+        </tr>
+        <tr class="table-row">
+            <td class="table-cell">Centro comercial Moctezuma</td>
+            <td class="table-cell">Francisco Chang</td>
+            <td class="table-cell">Mexico</td>
+        </tr>
+        <tr class="table-row">
+            <td class="table-cell">Alfreds Futterkiste</td>
+            <td class="table-cell">Maria Anders</td>
+            <td class="table-cell">Germany</td>
+        </tr>
+        <tr class="table-row">
+            <td class="table-cell">Centro comercial Moctezuma</td>
+            <td class="table-cell">Francisco Chang</td>
+            <td class="table-cell">Mexico</td>
         </tr>
     </table>
 </template>
 
 <style scoped>
     .table {
-        margin: 0 auto
+        margin: 0 auto;
     }
 
     .table-caption {
-        font-weight: 700;
+        font-weight: var(--font-weight-bold);
+    }
+
+    .table, .table-header-cell, .table-cell {
+        border: 1px solid var(--color-border);
+        border-collapse: collapse;
+    }
+
+    .table-header-cell, .table-cell {
+        padding: var(--small-padding);
+    }
+
+    .table-row:nth-child(even) {
+        background-color: var(--vt-c-green-lighter);
+    }
+
+    .table-row:first-of-type {
+        background-color: var(--vt-c-green-light);
     }
 </style>
