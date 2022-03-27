@@ -2,16 +2,19 @@
     import useMainStore from '@/store/index';
     const props = defineProps({
         errorMessage: String,
+        inputPlaceholder: String,
+        buttonText: String,
     });
     const store = useMainStore();
-    let userToken: string = '';
+    let userInput: string = '';
     /**
      * For better performance in a real project it would reasonable
      * to handle button clicks with throttle
      */
-    function setToken(e: Event) {
+    const emit = defineEmits(['userInputSubmit']);
+    function emitInputValue(e: Event) {
         e.preventDefault();
-        store.setToken(this.userToken);
+        emit('userInputSubmit', this.userInput);
     }
     export {};
 </script>
@@ -25,10 +28,10 @@
         <form class="user-form">
             <input 
                 class="user-input"
-                v-model="userToken"
-                placeholder="Input your GitHub PAT for Users and Repos"
+                v-model="userInput"
+                :placeholder="inputPlaceholder"
             />
-            <button class="user-button" type="submit" @click="setToken">Set My PAT</button>
+            <button class="user-button" @click="emitInputValue">{{buttonText}}</button>
         </form>
     </div>
 </template>

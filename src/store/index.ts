@@ -14,6 +14,10 @@ const useMainStore = defineStore('main', {
     setToken(token: string) {
       myFetch(token, viewer).then(({data}) => {
         this.user = data && data.viewer ? data.viewer.login : '';
+        /**
+         * for better UI token might be placed to cookies to not make
+         * user authorize every time after page reloading
+         */
         this.token = token;
         this.errorMessage = '';
       })

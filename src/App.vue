@@ -1,7 +1,12 @@
 <script setup lang="ts">
-  import TokenForm from '@/components/TokenForm.vue'
+  import UserForm from '@/components/UserForm.vue'
   import useMainStore from '@/store/index';
   const store = useMainStore();
+  const inputPlaceholder = 'Input your GitHub PAT for Users and Repos';
+  const buttonText = 'Submit my PAT';
+  function setToken(token: string) {
+    store.setToken(token);
+  }
 </script>
 
 <template>
@@ -18,9 +23,12 @@
     >
       Hello, {{store.user}}!
     </h1>
-    <token-form
+    <user-form
       v-else
       :errorMessage="store.errorMessage"
+      :inputPlaceholder="inputPlaceholder"
+      :buttonText="buttonText"
+      @userInputSubmit="setToken"
     />
     <router-view />
   </div>
