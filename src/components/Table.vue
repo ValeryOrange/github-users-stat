@@ -74,4 +74,8 @@
     .table-row:first-of-type {
         background-color: var(--vt-c-green-light);
     }
+
+    .table-cell {
+        word-wrap: break-word;
+    }
 </style>

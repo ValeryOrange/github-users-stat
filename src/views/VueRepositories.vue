@@ -7,6 +7,15 @@
     const inputPlaceholder = 'Input substring to find a repo';
     const buttonText = 'Search';
 
+    /**
+     * Request and render only 20 first repost, but there might be different
+     * solutions:
+     * 1. paging
+     * 2. button to download more results
+     * 3. filtration results
+     * 4. add another input to dynamically set the amount of requested
+     *    repos
+     */
     function requestRepos(substr: string) {
         store.searchRepos(substr);
     }
