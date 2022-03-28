@@ -39,7 +39,10 @@ const useMainStore = defineStore('main', {
       const variables = {
         query: substr,
       };
-      myFetch(this.token, searchRepos, variables).then(({data, errors}) => {
+      myFetch(this.token, searchRepos, variables).then(({ data, errors = []}) => {
+        if (!data) {
+          return;
+        }
         this.reposCount = data.search.repositoryCount;
         this.repositoryTableHeader = `Found ${data.search.repositoryCount} repositories.`;
         this.repos = data.search.edges.map((item: RepositoryInfo, index: number): Repo => {
@@ -75,7 +78,7 @@ const useMainStore = defineStore('main', {
                * here is my assumption that the error array with errors is 
                * always consistent with the data array
                */
-              value: errors[index].message,
+              value: errors.length ? errors[index].message : '',
             },
           ];
         });
