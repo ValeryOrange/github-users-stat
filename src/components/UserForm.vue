@@ -8,7 +8,7 @@
     const store = useMainStore();
     let userInput: string = '';
     /**
-     * For better performance in a real project it would reasonable
+     * For better performance in a real project it would be reasonable
      * to handle button clicks with throttle
      */
     const emit = defineEmits(['userInputSubmit']);

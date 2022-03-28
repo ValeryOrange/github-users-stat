@@ -19,7 +19,7 @@ npm run build
 ```
 
 ## Project Comments
-1. For better performance in a real project it would reasonable to handle button clicks with throttle
+1. For better performance in a real project it would be reasonable to handle button clicks with throttle
 1. In a real project I would rather use prepared tools like cross-fetch to use it with the same interface on both server and client side for SSR-projects
 1. For better UI token might be placed to cookies to not make user authorize every time after page reloading
 1. Request and render only 20 first repost, but there might be different solutions depending on customer's wishes:
