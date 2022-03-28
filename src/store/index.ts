@@ -18,7 +18,7 @@ const useMainStore = defineStore('main', {
     repositoryTableHeader: 'Search for GitHub repositories.',
     repositoryColumns,
     usersColumns,
-    usersTableHeader: 'Search for GitHub users',
+    usersTableHeader: 'Search for GitHub users is impossible',
   }),
   actions: {
     setToken(token: string) {

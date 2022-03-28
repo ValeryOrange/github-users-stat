@@ -27,3 +27,8 @@
     </div>
 </template>
 
+<style scoped>
+    .users-table {
+        margin-left: var(--regular-margin)
+    }
+</style>
