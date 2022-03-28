@@ -72,7 +72,7 @@ const useMainStore = defineStore('main', {
             {
               type: 'errorMessage',
               /**
-               * here is my assumptions that the error array with errors is 
+               * here is my assumption that the error array with errors is 
                * always consistent with the data array
                */
               value: errors[index].message,
